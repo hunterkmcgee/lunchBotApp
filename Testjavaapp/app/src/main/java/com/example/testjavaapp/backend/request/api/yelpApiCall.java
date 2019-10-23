@@ -29,7 +29,7 @@ public class yelpApiCall{
         protected String doInBackground(String... strings) {
             String output = "";
             OkHttpClient client = new OkHttpClient();
-            String apiKey = "Bearer zNM2fuSJJkJbyIua7T0Yl468_PT3Xhsan1tmmwcXE90rvgoEl3TClYAVb2medEZe1dzReYkmXQoSL0-PmhTzVE8nZRO1BuA_3iHYU090KIwXqd7jy7JnTl0sdrxyXXYx";
+            String apiKey = "Bearer *apiKey*";
             HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.yelp.com/v3/businesses/search").newBuilder();
             urlBuilder.addQueryParameter("term", this.typeOfFood);
             urlBuilder.addQueryParameter("location", this.place);
