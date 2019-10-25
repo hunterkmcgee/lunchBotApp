@@ -1,24 +1,18 @@
-package com.example.testjavaapp;
-import com.example.testjavaapp.backend.request.*;
+package com.models;
+import com.example.testjavaapp.R;
+
 import androidx.appcompat.app.AppCompatActivity;
-import static java.lang.System.out;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import java.io.*;
-import java.util.*;
 
-import java.util.List;
-
-import com.example.testjavaapp.backend.request.api.JSONConvert;
-import com.example.testjavaapp.backend.request.api.yelpApiCall;
-import com.google.gson.Gson;
+import com.backend.JSONConvert;
+import com.backend.yelpApiCall;
 
 import org.json.JSONException;
 
-import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -27,6 +21,7 @@ Button playButton;
 String a,b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /*
         yelpApiCall.asshole hello = new yelpApiCall.asshole("Mexican","nashville");
         String bitch = null;
         try {
@@ -41,7 +36,7 @@ String a,b;
             JSONConvert gay = new JSONConvert(bitch);
         } catch (JSONException e) {
             e.printStackTrace();
-        }
+        }*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         workButton= (Button)findViewById(R.id.workButton);

@@ -1,4 +1,4 @@
-package com.example.testjavaapp.backend.request.api;
+package com.backend;
 
 import java.util.HashMap;
 import java.util.Map;
