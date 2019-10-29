@@ -5,28 +5,27 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 
 public class JSONConvert
 {
-    final int MAX_REQEUST = 20;
-    private String responseArray[] = new String[MAX_REQEUST];
+    private List responseArray;
     public JSONConvert(String response) throws JSONException {
         //String json = "";
-        String test[] = new String[20];
+        List test = new ArrayList();
         Gson gs1 = new Gson();
         JSONObject obj = new JSONObject(response);
         JSONArray pageName = obj.getJSONArray("businesses");
         for(int i =0; i < pageName.length(); i++)
         {
             JSONObject aye = pageName.getJSONObject(i);
-            test[i] = "Name: " + aye.getString("name")+ ", Rating: " + aye.getString("rating");
+            test.add("Name: " + aye.getString("name") + ", Rating: " + aye.getString("rating"));
         }
             //json = (response.replace("\"", "\\\""));
             //System.out.println(json);
-
-        ResponseObj resp = gs1.fromJson(response, ResponseObj.class);
-        ResponseObj.Category cat = gs1.fromJson(response, ResponseObj.Category.class);
-        String resp1 = gs1.toJson(resp);
         responseArray = test;
         /*
         for(int i = 0; i < pageName.length(); i++)
@@ -36,7 +35,11 @@ public class JSONConvert
 
          */
     }
-    public String[] getResponseArray(){
+    public List getResponseArray(){
         return responseArray;
+    }
+    public String getOneRandom(){
+        int rnd = new Random().nextInt(responseArray.size());
+        return (String) responseArray.get(rnd);
     }
 }

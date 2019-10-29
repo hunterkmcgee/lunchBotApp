@@ -8,16 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.backend.JSONConvert;
-import com.backend.yelpApiCall;
-
-import org.json.JSONException;
-
-import java.util.concurrent.ExecutionException;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 Button workButton;
-Button playButton;
+Button loginButton;
 String a,b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +33,9 @@ String a,b;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         workButton= (Button)findViewById(R.id.workButton);
-        playButton = (Button)findViewById(R.id.playButton);
+        loginButton = (Button)findViewById(R.id.loginButton);
         workButton.setOnClickListener(this);
-        playButton.setOnClickListener(this);
+        loginButton.setOnClickListener(this);
 
 
     }
@@ -51,12 +44,16 @@ String a,b;
         if(view.getId()==R.id.workButton){
             openScreen2();
         }
-        if(view.getId()==R.id.playButton){
-
+        if(view.getId()==R.id.loginButton){
+            openLoginScreen();
         }
     }
     public void openScreen2(){
         Intent intent = new Intent(this, activity2.class);
+        startActivity(intent);
+    }
+    public void openLoginScreen(){
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
