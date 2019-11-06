@@ -22,7 +22,6 @@
         <activity android:name="com.models.practice_activity" />
         <activity android:name="com.models.activity_choose_search" />
         <activity android:name="com.models.LoginActivity" />
-        <activity android:name="com.models.activity2" />
         <activity android:name="com.models.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

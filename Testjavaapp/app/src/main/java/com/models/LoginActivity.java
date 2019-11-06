@@ -2,7 +2,6 @@ package com.models;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.testjavaapp.R;
-import com.google.android.material.textfield.TextInputLayout;
 
 import android.content.Intent;
 import android.os.Bundle;

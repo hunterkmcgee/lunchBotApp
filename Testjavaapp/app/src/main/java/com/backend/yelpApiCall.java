@@ -15,12 +15,11 @@ import okhttp3.Response;
 
 public class yelpApiCall{
     @SuppressLint("StaticFieldLeak")
-    public static class asshole extends AsyncTask<String,String,String>{
+    public static class AsyncApi extends AsyncTask<String,String,String>{
 
         private String typeOfFood;
         private String place;
-
-        public asshole(String foodType, String location) {
+        public AsyncApi(String foodType, String location) {
             this.typeOfFood = foodType;
             this.place = location;
         }
@@ -29,7 +28,7 @@ public class yelpApiCall{
         protected String doInBackground(String... strings) {
             String output = "";
             OkHttpClient client = new OkHttpClient();
-            String apiKey = "Bearer THm3v8JSTcnmV2n1eApHvSq11AehAWF2aqKC0d4ex_4r7fdXvWsQujdpONJgWCVsAFtDvfZzmN2SaXqEx6tVZ8sotsRjOmG1w2Otkz2L6G60PxaTzoHERzoCo6mwXXYx";
+            String apiKey = "Bearer *apiKey*";
             HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.yelp.com/v3/businesses/search").newBuilder();
             urlBuilder.addQueryParameter("term", this.typeOfFood);
            // urlBuilder.addQueryParameter("location", this.place);
@@ -50,21 +49,6 @@ public class yelpApiCall{
             }
             return output;
         }
-
-        /*
-        public void sendSearch() throws IOException {
-            OkHttpClient client = new OkHttpClient();
-            String apiKey = "Bearer zNM2fuSJJkJbyIua7T0Yl468_PT3Xhsan1tmmwcXE90rvgoEl3TClYAVb2medEZe1dzReYkmXQoSL0-PmhTzVE8nZRO1BuA_3iHYU090KIwXqd7jy7JnTl0sdrxyXXYx";
-            HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.yelp.com/v3/businesses/search").newBuilder();
-            urlBuilder.addQueryParameter("term", this.typeOfFood);
-            String url = urlBuilder.build().toString();
-            Request request = new Request.Builder()
-                    .header("Authorization", apiKey)
-                    .url(url)
-                    .build();
-            Response response = client.newCall(request).execute();
-            //System.out.println(response.body().string());
-        }
-         */
+        
     }
 }

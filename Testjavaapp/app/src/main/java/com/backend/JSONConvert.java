@@ -15,22 +15,20 @@ public class JSONConvert
     private List responseArray;
     public JSONConvert(String response) throws JSONException {
         //String json = "";
-        List test = new ArrayList();
+        List mainList = new ArrayList();
         Gson gs1 = new Gson();
         JSONObject obj = new JSONObject(response);
         JSONArray pageName = obj.getJSONArray("businesses");
         for(int i =0; i < pageName.length(); i++)
         {
-            JSONObject aye = pageName.getJSONObject(i);
-            test.add("Name: " + aye.getString("name") + ", Rating: " + aye.getString("rating"));
+            JSONObject outputJson = pageName.getJSONObject(i);
+            mainList.add("Name: " + outputJson.getString("name") + ", Rating: " + outputJson.getString("rating"));
         }
-            //json = (response.replace("\"", "\\\""));
-            //System.out.println(json);
-        responseArray = test;
+        responseArray = mainList;
         /*
         for(int i = 0; i < pageName.length(); i++)
         {
-            System.out.println(test[i]);
+            System.out.println(mainList[i]);
         }
 
          */
