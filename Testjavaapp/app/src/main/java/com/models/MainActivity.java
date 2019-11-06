@@ -5,8 +5,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+/*
+public class practice_activity extends AppCompatActivity {
+
+    private static int SPLASH_TIME_OUT = 4000;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_practice_activity);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                intent homeIntent = new Intent (MainActivity.this, LoginActivity.class);
+                startActivity(homeIntent);
+                finish();
+            }
+        }, SPLASH_TIME_OUT);
+    }
+}
+
+*/
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 Button workButton;
@@ -49,7 +72,7 @@ String a,b;
         }
     }
     public void openScreen2(){
-        Intent intent = new Intent(this, activity2.class);
+        Intent intent = new Intent(this, activity_choose_search.class);
         startActivity(intent);
     }
     public void openLoginScreen(){

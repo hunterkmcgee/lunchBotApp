@@ -40,7 +40,14 @@ public class activity2 extends AppCompatActivity {
             public void onClick(View v) {
                 List apiArray;
                 apiResponse.setText("");
-                yelpApiCall.asshole hello = new yelpApiCall.asshole("Mexican","nashville");
+
+                String[] stringArray;
+                stringArray = new String[]{ "American", "Mexican", "Asian","European", "African", "South American",
+                                            "Indian", "burgers", "Pizza", "Steak", "Desserts", "Breakfast" };
+                Random randomIndex = new Random();
+                int n = randomIndex.nextInt(12);
+
+                yelpApiCall.asshole hello = new yelpApiCall.asshole( stringArray[n],"nashville");
                 String bitch = null;
                 try {
                     bitch = hello.execute().get();
@@ -77,7 +84,7 @@ public class activity2 extends AppCompatActivity {
         });
     }
     public void goBackScreen() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 }

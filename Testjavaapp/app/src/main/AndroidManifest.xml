@@ -13,7 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LunchBot"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.models.LoginActivity"/>
+        <activity android:name="com.models.UserInputDisplayActivity"></activity>
+        <activity android:name="com.models.RandomDisplayActivity" />
+        <activity android:name="com.models.MostRecentDisplayActivity" />
+        <activity android:name="com.models.FavoriteDisplayActivity" />
+        <activity android:name="com.models.NewUserSearchActivity" />
+        <activity android:name="com.models.UserChoicesActivity" />
+        <activity android:name="com.models.practice_activity" />
+        <activity android:name="com.models.activity_choose_search" />
+        <activity android:name="com.models.LoginActivity" />
         <activity android:name="com.models.activity2" />
         <activity android:name="com.models.MainActivity">
             <intent-filter>
