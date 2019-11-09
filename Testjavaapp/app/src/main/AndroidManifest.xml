@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.testjavaapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LunchBot"
+        android:usesCleartextTraffic="true">
+        <activity android:name="com.models.UserInputDisplayActivity"></activity>
+        <activity android:name="com.models.RandomDisplayActivity" />
+        <activity android:name="com.models.MostRecentDisplayActivity" />
+        <activity android:name="com.models.FavoriteDisplayActivity" />
+        <activity android:name="com.models.NewUserSearchActivity" />
+        <activity android:name="com.models.UserChoicesActivity" />
+        <activity android:name="com.models.practice_activity" />
+        <activity android:name="com.models.activity_choose_search" />
+        <activity android:name="com.models.LoginActivity" />
+        <activity android:name="com.models.activity2" />
+        <activity android:name="com.models.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.backend.yelpApiCall" />
+    </application>
+
+</manifest>
