@@ -1,0 +1,83 @@
+
+package com.Database;
+import java.sql.*;
+
+
+public class SQLConnect {
+
+    // Connect to database.
+
+    public static void main(String[] args) {
+        String connectionUrl =
+                "jdbc:sqlserver://lunchbotjava.database.windows.net:1433;" +
+                "database=lunchBot;" +
+                "user=zmk2b@lunchbotjava;" +
+                "password=Vesemir1234;" +
+                "encrypt=true;" +
+                "trustServerCertificate=false;" +
+                "hostNameInCertificate=*.database.windows.net;" +
+                "loginTimeout=30;";
+
+        String insertSql = "INSERT INTO RESTAURANT(restName, rating, address, distance," +
+                " categories) VALUES ('Test456', 4.5, '123 street drive', 50.0, 'Pizza')";
+
+        ResultSet resultSet = null;
+
+
+        //query search
+        try{
+            Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "SELECT * FROM RESTAURANT;";
+            resultSet = statement.executeQuery(selectSql);
+
+            // Print results from select statement
+            //RESTAURANT(restName, rating, address, distance, categories)
+            //USERID(userName, password, Fname, Lname)
+
+            while (resultSet.next()) {
+                String  restName = resultSet.getString(1);
+                String  rating = resultSet.getString(2);
+                String  address = resultSet.getString(3);
+                String  distance = resultSet.getString(4);
+                String  categories = resultSet.getString(5);
+
+                System.out.println(
+                        restName + " " +
+                                rating + " " +
+                                address + " " +
+                                distance + " " +
+                                categories);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        //insert
+
+        try{
+            Connection connection = DriverManager.getConnection(connectionUrl);
+            PreparedStatement prepsInsertProduct = connection.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
+
+            prepsInsertProduct.execute();
+            // Retrieve the generated key from the insert.
+            resultSet = prepsInsertProduct.getGeneratedKeys();
+
+            // Print the ID of the inserted row.
+            while (resultSet.next()) {
+                System.out.println("Generated: " + resultSet.getString(1));
+            }
+        }
+        // Handle any errors that may have occurred.
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+}
