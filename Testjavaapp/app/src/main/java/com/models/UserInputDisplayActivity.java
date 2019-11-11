@@ -45,26 +45,26 @@ public class UserInputDisplayActivity extends AppCompatActivity {
                 List apiArray;
                 apiResponse.setText("");
 
-                /* String[] stringArray;
+                String[] stringArray;
                 stringArray = new String[]{ "American", "Mexican", "Asian","European", "African", "South American",
                         "Indian", "burgers", "Pizza", "Steak", "Desserts", "Breakfast" };
                 Random randomIndex = new Random();
-                int n = randomIndex.nextInt(12); */
+                int n = randomIndex.nextInt(12);
 
-                yelpApiCall.asshole hello = new yelpApiCall.asshole( apiInput,"nashville");
-                String bitch = null;
+                yelpApiCall.AsyncApi sendCall = new yelpApiCall.AsyncApi( stringArray[n],"nashville");
+                String response = null;
                 try {
-                    bitch = hello.execute().get();
+                    response = sendCall.execute().get();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 try {
-                    JSONConvert gay = new JSONConvert(bitch);
-                    apiArray = gay.getResponseArray();
+                    JSONConvert convertedOutput = new JSONConvert(response);
+                    apiArray = convertedOutput.getResponseArray();
                     System.out.println(apiArray.size());
-                    //apiResponse.append(gay.getOneRandom()+"\n");
+                    //apiResponse.append(convertedOutput.getOneRandom()+"\n");
                     int length = apiArray.size();
 
                     for(int i=0; i < length; i++)

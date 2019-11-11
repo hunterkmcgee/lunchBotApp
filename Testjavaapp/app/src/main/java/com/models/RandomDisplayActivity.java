@@ -47,23 +47,21 @@ public class RandomDisplayActivity extends AppCompatActivity {
                 Random randomIndex = new Random();
                 int n = randomIndex.nextInt(12);
 
-                yelpApiCall.asshole hello = new yelpApiCall.asshole(stringArray[n],"nashville");
-                String bitch = null;
+                yelpApiCall.AsyncApi sendCall = new yelpApiCall.AsyncApi( stringArray[n],"nashville");
+                String response = null;
                 try {
-                    bitch = hello.execute().get();
+                    response = sendCall.execute().get();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 try {
-                    JSONConvert gay = new JSONConvert(bitch);
-                    apiArray = gay.getResponseArray();
+                    JSONConvert convertedOutput = new JSONConvert(response);
+                    apiArray = convertedOutput.getResponseArray();
                     System.out.println(apiArray.size());
-                    //apiResponse.append(gay.getOneRandom()+"\n");
+                    //apiResponse.append(convertedOutput.getOneRandom()+"\n");
                     int length = apiArray.size();
-
-                    //int length2 = 3;
 
                     for(int i=0; i < length; i++)
                     {

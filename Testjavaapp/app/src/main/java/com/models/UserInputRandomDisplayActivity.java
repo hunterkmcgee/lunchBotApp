@@ -51,7 +51,7 @@ public class UserInputRandomDisplayActivity extends AppCompatActivity {
                 Random randomIndex = new Random();
                 int n = randomIndex.nextInt(12); */
 
-                yelpApiCall.asshole hello = new yelpApiCall.asshole( apiInput,"nashville");
+                yelpApiCall.AsyncApi hello = new yelpApiCall.AsyncApi( apiInput,"nashville");
                 String bitch = null;
                 try {
                     bitch = hello.execute().get();
