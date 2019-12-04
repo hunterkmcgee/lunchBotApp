@@ -16,7 +16,6 @@ public class JSONConvert
     public JSONConvert(String response) throws JSONException {
         //String json = "";
         List mainList = new ArrayList();
-        Gson gs1 = new Gson();
         JSONObject obj = new JSONObject(response);
         JSONArray pageName = obj.getJSONArray("businesses");
         for(int i =0; i < pageName.length(); i++)
