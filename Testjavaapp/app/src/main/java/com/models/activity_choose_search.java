@@ -1,32 +1,27 @@
 package com.models;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.backend.JSONConvert;
-import com.backend.yelpApiCall;
 import com.example.testjavaapp.R;
 
-import org.json.JSONException;
+public class activity_choose_search extends AppCompatActivity implements View.OnClickListener  {
 
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.ExecutionException;
-
-public class activity_choose_search extends AppCompatActivity {
     Button youChooseButton;
     Button weChooseButton;
     Button startOverButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activity2);
+        setContentView(R.layout.activity_choose_search);
+
         youChooseButton= findViewById(R.id.youChoose);
         weChooseButton = findViewById(R.id.weChoose);
         startOverButton = findViewById(R.id.startOver);
@@ -62,19 +57,7 @@ public class activity_choose_search extends AppCompatActivity {
         startActivity(intent);
     }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        goBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goBackScreen();
-            }
-        });
-    }
-    public void goBackScreen() {
+    public void openStartOver(){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
@@ -96,7 +79,7 @@ public class activity_choose_search extends AppCompatActivity {
                     }
                     case MotionEvent.ACTION_BUTTON_RELEASE: {
                         v.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.SRC_ATOP);
-                     }
+                    }
                 }
                 return false;
             }

@@ -60,7 +60,7 @@ public class UserInputDisplayActivity extends AppCompatActivity {
                 yelpApiCall.AsyncApi sendCall = new yelpApiCall.AsyncApi( apiInput,"nashville");
                 String inputString = null;
                 try {
-                    inputString = hello.execute().get();
+                    inputString = sendCall.execute().get();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
