@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.models.MainActivity">
+    tools:context="com.models.MainActivity"
+    android:background="@drawable/logo_bg_gray">
 
     <Button
         android:id="@+id/workButton"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
         android:layout_marginLeft="162dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="292dp"
         android:layout_marginEnd="162dp"
         android:layout_marginRight="162dp"
         android:text="skip login"
@@ -28,7 +29,7 @@
         android:layout_marginLeft="162dp"
         android:layout_marginEnd="162dp"
         android:layout_marginRight="162dp"
-        android:layout_marginBottom="256dp"
+        android:layout_marginBottom="164dp"
         android:text="login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,17 +37,42 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="174dp"
-        android:layout_marginLeft="174dp"
-        android:layout_marginTop="85dp"
-        android:layout_marginEnd="179dp"
-        android:layout_marginRight="179dp"
-        android:text="lunchBot"
+        android:id="@+id/textView2"
+        android:layout_width="256dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="184dp"
+        android:background="@color/colorPrimary"
+        android:text="Welcome to LunchBot!"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="253dp"
+        android:layout_height="38dp"
+        android:text="Skip Log In to quickly and simply select a restaurant."
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.43"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.347" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="253dp"
+        android:layout_height="62dp"
+        android:text="Log In to search using your past history to specialize your needs."
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.363" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

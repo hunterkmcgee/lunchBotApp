@@ -1,7 +1,8 @@
 package com.models;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,52 +20,47 @@ import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 public class activity_choose_search extends AppCompatActivity {
-    Button goBackButton;
-    Button apiButton;
-    TextView apiResponse;
-
+    Button youChooseButton;
+    Button weChooseButton;
+    Button startOverButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity2);
-        goBackButton = (Button) findViewById(R.id.goBackBtn);
-        apiButton = (Button)findViewById(R.id.apiButton);
-        apiResponse = (TextView)findViewById(R.id.apiText);
-        apiResponse.setMovementMethod(new ScrollingMovementMethod());
-        apiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List apiArray;
-                apiResponse.setText("");
+        youChooseButton= findViewById(R.id.youChoose);
+        weChooseButton = findViewById(R.id.weChoose);
+        startOverButton = findViewById(R.id.startOver);
 
-                String[] stringArray;
-                stringArray = new String[]{ "American", "Mexican", "Asian","European", "African", "South American",
-                                            "Indian", "burgers", "Pizza", "Steak", "Desserts", "Breakfast" };
-                Random randomIndex = new Random();
-                int n = randomIndex.nextInt(12);
-                yelpApiCall.AsyncApi sendCall = new yelpApiCall.AsyncApi( stringArray[n],"nashville");
-                String response = null;
-                try {
-                    response = sendCall.execute().get();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    JSONConvert convertedOutput = new JSONConvert(response);
-                    apiArray = convertedOutput.getResponseArray();
-                    System.out.println(apiArray.size());
-                    //apiResponse.append(convertedOutput.getOneRandom()+"\n");
-                    int length = apiArray.size();
+        youChooseButton.setOnClickListener(this);
+        weChooseButton.setOnClickListener(this);
+        startOverButton.setOnClickListener(this);
 
-                    for(int i=0; i < length; i++)
-                    {
-                        int rnd = new Random().nextInt(apiArray.size());
-                        apiResponse.append(apiArray.get(rnd)+"\n");
-                        apiArray.remove(rnd);
-                    }
+        buttonEffect(youChooseButton);
+        buttonEffect(weChooseButton);
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId()==R.id.youChoose){
+            openUserChoose();
+        }
+        if(view.getId()==R.id.weChoose){
+            openRandomChoose();
+        }
+        if(view.getId()==R.id.startOver){
+            openStartOver();
+        }
+    }
+
+    public void openUserChoose(){
+        Intent intent = new Intent(this, UserChoicesActivity.class);
+        startActivity(intent);
+    }
+    public void openRandomChoose(){
+        Intent intent = new Intent(this, RandomDisplayActivity.class);
+        startActivity(intent);
+    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -81,5 +77,29 @@ public class activity_choose_search extends AppCompatActivity {
     public void goBackScreen() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+    }
+
+    public static void buttonEffect(View button){
+        button.setOnTouchListener(new View.OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN: {
+                        v.getBackground().setColorFilter(0x00FF2400, PorterDuff.Mode.SRC_ATOP);
+                        v.invalidate();
+                        break;
+                    }
+                    case MotionEvent.ACTION_UP: {
+                        v.getBackground().clearColorFilter();
+                        v.invalidate();
+                        break;
+                    }
+                    case MotionEvent.ACTION_BUTTON_RELEASE: {
+                        v.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.SRC_ATOP);
+                     }
+                }
+                return false;
+            }
+        });
     }
 }

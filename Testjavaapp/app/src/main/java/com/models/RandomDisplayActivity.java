@@ -2,8 +2,14 @@ package com.models;
 import java.util.ArrayList;
 import java.util.Arrays;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
 import android.text.method.ScrollingMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,29 +31,41 @@ import java.util.Arrays;
 public class RandomDisplayActivity extends AppCompatActivity {
     Button goBackButton;
     Button apiButton;
+    Button newButton;
+
     TextView apiResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activity2);
-        goBackButton = (Button) findViewById(R.id.goBackBtn);
-        apiButton = (Button)findViewById(R.id.apiButton);
-        apiResponse = (TextView)findViewById(R.id.apiText);
-        apiResponse.setMovementMethod(new ScrollingMovementMethod());
-        apiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List apiArray;
-                apiResponse.setText("");
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_activity2);
 
-                String[] stringArray;
-                stringArray = new String[]{ "American", "Mexican", "Sushi","Chinese", "Thai", "South American",
-                                             "Indian", "burgers", "Pizza", "Steak", "Desserts", "Breakfast" };
-                Random randomIndex = new Random();
-                int n = randomIndex.nextInt(12);
+    final String[] stringArray;
+    stringArray = new String[]{ "American", "Mexican", "Asian","European", "African", "South American",
+            "Indian", "burgers", "Pizza", "Steak", "Desserts", "Breakfast" };
 
-                yelpApiCall.AsyncApi sendCall = new yelpApiCall.AsyncApi( stringArray[n],"nashville");
+    Random randomIndex = new Random();
+    final int n = randomIndex.nextInt(12);
+
+    TextView inputString = (TextView)findViewById(R.id.textView9);
+
+    inputString = (TextView) findViewById(R.id.textView9);
+    inputString.setText(stringArray[n]);
+
+    newButton = (Button) findViewById(R.id.button4);
+    goBackButton = (Button) findViewById(R.id.goBackBtn);
+    apiButton = (Button)findViewById(R.id.apiButton);
+
+    apiResponse = (TextView)findViewById(R.id.apiText);
+    apiResponse.setMovementMethod(new ScrollingMovementMethod());
+
+    apiButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //int i.setValue(n);
+            List apiArray;
+            apiResponse.setText("");
+            yelpApiCall.AsyncApi sendCall = new yelpApiCall.AsyncApi( stringArray[n],"nashville");
                 String response = null;
                 try {
                     response = sendCall.execute().get();
@@ -56,26 +74,44 @@ public class RandomDisplayActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                try {
-                    JSONConvert convertedOutput = new JSONConvert(response);
-                    apiArray = convertedOutput.getResponseArray();
-                    System.out.println(apiArray.size());
-                    //apiResponse.append(convertedOutput.getOneRandom()+"\n");
-                    int length = apiArray.size();
+            try {
+                JSONConvert convertor = new JSONConvert(response);
+                apiArray = convertor.getResponseArray();
 
-                    for(int i=0; i < length; i++)
-                    {
-                        int rnd = new Random().nextInt(apiArray.size());
-                        apiResponse.append(apiArray.get(rnd)+"\n");
-                        apiArray.remove(rnd);
-                    }
+                int length = apiArray.size();
 
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                for(int i=0; i < length; i++)
+                {
+                    int rnd = new Random().nextInt(apiArray.size());
+                    apiResponse.append("IMG   " + apiArray.get(rnd)+ "\n");
+                    apiArray.remove(rnd);
                 }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        });
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            goBackScreen();
+        }
+
+
+    });
+
+        newButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newButtonScreen();
             }
         });
+
+
         goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +120,36 @@ public class RandomDisplayActivity extends AppCompatActivity {
         });
     }
     public void goBackScreen() {
+        Intent intent = new Intent(this, RandomDisplayActivity.class);
+        startActivity(intent);
+    }
+
+    public void newButtonScreen(){
         Intent intent = new Intent(this, activity_choose_search.class);
         startActivity(intent);
     }
+
 }
+
+/*
+
+SpannableString ss = new SpannableString("Android is a Software stack");
+ClickableSpan clickableSpan = new ClickableSpan() {
+    @Override
+    public void onClick(View textView) {
+        startActivity(new Intent(MyActivity.this, NextActivity.class));
+    }
+    @Override
+    public void updateDrawState(TextPaint ds) {
+        super.updateDrawState(ds);
+        ds.setUnderlineText(false);
+    }
+};
+ss.setSpan(clickableSpan, 22, 27, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+TextView textView = (TextView) findViewById(R.id.hello);
+textView.setText(ss);
+textView.setMovementMethod(LinkMovementMethod.getInstance());
+textView.setHighlightColor(Color.TRANSPARENT);
+
+ */

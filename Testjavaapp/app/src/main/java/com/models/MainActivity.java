@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+
 /*
 public class practice_activity extends AppCompatActivity {
 
@@ -30,11 +31,12 @@ public class practice_activity extends AppCompatActivity {
 
 */
 
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-Button workButton;
-Button loginButton;
-String a,b;
+
+    Button workButton;
+
+    Button loginButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,6 @@ String a,b;
         loginButton = (Button)findViewById(R.id.loginButton);
         workButton.setOnClickListener(this);
         loginButton.setOnClickListener(this);
-
 
     }
     @Override
@@ -55,10 +56,12 @@ String a,b;
             openLoginScreen();
         }
     }
+
     public void openScreen2(){
         Intent intent = new Intent(this, activity_choose_search.class);
         startActivity(intent);
     }
+
     public void openLoginScreen(){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
