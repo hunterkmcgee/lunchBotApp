@@ -22,7 +22,8 @@ public class JSONConvert
         for(int i =0; i < pageName.length(); i++)
         {
             JSONObject aye = pageName.getJSONObject(i);
-            test.add("Name: " + aye.getString("name") + ", Rating: " + aye.getString("rating"));
+            test.add("Name: " + aye.getString("name") +
+                    ", Rating: " + aye.getString("rating"));
         }
             //json = (response.replace("\"", "\\\""));
             //System.out.println(json);

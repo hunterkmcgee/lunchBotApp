@@ -72,7 +72,7 @@ public class UserInputRandomDisplayActivity extends AppCompatActivity {
                     for(int i=0; i < length; i++)
                     {
                         int rnd = new Random().nextInt(apiArray.size());
-                        apiResponse.append(apiArray.get(rnd)+"\n");
+                        apiResponse.append(apiArray.get(rnd)+ " Click here " + "\n");
                         apiArray.remove(rnd);
                     }
 

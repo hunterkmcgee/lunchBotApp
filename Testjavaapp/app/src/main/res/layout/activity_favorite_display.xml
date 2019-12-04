@@ -1,56 +1,124 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    tools:context="com.models.FavoriteDisplayActivity"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.models.activity2"
+    android:background="@drawable/logo_bg_gray" >
+
+    <TextView
+        android:id="@+id/apiText"
+        android:layout_width="wrap_content"
+        android:layout_height="516dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+
+        android:scrollbars="vertical"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/apiButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/apiButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="35dp"
+        android:layout_toStartOf="@+id/goBackBtn"
+        android:layout_toLeftOf="@+id/goBackBtn"
+        android:text="See Selections"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="8dp"
+        app:rippleColor="#33AAAAAA"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="2dp" />
+
+    <Button
+        android:id="@+id/goBackBtn"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="36dp"
+        android:text="Start Over?"
+        android:textColor="#000000"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:tintMode="src_in"
-        app:srcCompat="@drawable/lunchbot"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.038"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:tint="#ECECEC"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp"
-        android:id="@+id/imageView3"/>
+        android:id="@+id/imageView4"
+        android:layout_width="96dp"
+        android:layout_height="83dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="308dp"
+        android:layout_marginRight="308dp"
+        android:layout_marginBottom="645dp"
+        app:srcCompat="@drawable/lunchbot" />
 
     <TextView
-        android:layout_height="100dp"
-        android:layout_width="289dp"
-        app:layout_constraintVertical_bias="0.019"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/textView4"
-        android:fontFamily="@font/gilroy_eb"
-        android:textSize="68dp"
-        android:textColorLink="#ECECEC"
-        android:textColor="#ECECEC"
-        android:text="lunchBot"
-        android:layout_marginTop="528dp"/>
+        android:id="@+id/textView"
+        android:layout_width="126dp"
+        android:layout_height="43dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="179dp"
+        android:layout_marginRight="179dp"
+        android:layout_marginBottom="658dp"
+        android:paddingTop="7dp"
+        android:text="Searching for:"
 
-    <TextView
-        android:layout_height="526dp"
-        android:layout_width="257dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/textView5"
         android:textColor="#000000"
-        android:text="This will be where we display favorite queries \n Q1: McDonalds \n Q2:
-                      Burger King \n AND SO ON... \n This is for illustrative purposes \n only
-                      This is showing the background and some sense \n of what the API output will look like "/>
+        android:textSize="18sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="162dp"
+        android:layout_height="57dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="654dp"
+        android:text="TextView" />
+
+
+</RelativeLayout>
