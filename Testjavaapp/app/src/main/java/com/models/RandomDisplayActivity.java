@@ -1,4 +1,6 @@
 package com.models;
+import java.util.ArrayList;
+import java.util.Arrays;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -12,13 +14,15 @@ import com.backend.JSONConvert;
 import com.backend.yelpApiCall;
 import com.example.testjavaapp.R;
 
+import java.lang.Object;
 import org.json.JSONException;
 
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
+import java.util.Arrays;
 
-public class activity_choose_search extends AppCompatActivity {
+public class RandomDisplayActivity extends AppCompatActivity {
     Button goBackButton;
     Button apiButton;
     TextView apiResponse;
@@ -38,10 +42,11 @@ public class activity_choose_search extends AppCompatActivity {
                 apiResponse.setText("");
 
                 String[] stringArray;
-                stringArray = new String[]{ "American", "Mexican", "Asian","European", "African", "South American",
-                                            "Indian", "burgers", "Pizza", "Steak", "Desserts", "Breakfast" };
+                stringArray = new String[]{ "American", "Mexican", "Sushi","Chinese", "Thai", "South American",
+                                             "Indian", "burgers", "Pizza", "Steak", "Desserts", "Breakfast" };
                 Random randomIndex = new Random();
                 int n = randomIndex.nextInt(12);
+
                 yelpApiCall.AsyncApi sendCall = new yelpApiCall.AsyncApi( stringArray[n],"nashville");
                 String response = null;
                 try {
@@ -79,7 +84,7 @@ public class activity_choose_search extends AppCompatActivity {
         });
     }
     public void goBackScreen() {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, activity_choose_search.class);
         startActivity(intent);
     }
 }

@@ -18,7 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -35,5 +38,4 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     // https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc
     testImplementation group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '7.4.1.jre8'
-
 }

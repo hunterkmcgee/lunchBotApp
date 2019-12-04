@@ -1,4 +1,6 @@
 package com.models;
+import java.util.ArrayList;
+import java.util.Arrays;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -12,13 +14,15 @@ import com.backend.JSONConvert;
 import com.backend.yelpApiCall;
 import com.example.testjavaapp.R;
 
+import java.lang.Object;
 import org.json.JSONException;
 
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
+import java.util.Arrays;
 
-public class activity_choose_search extends AppCompatActivity {
+public class UserInputRandomDisplayActivity extends AppCompatActivity {
     Button goBackButton;
     Button apiButton;
     TextView apiResponse;
@@ -27,6 +31,10 @@ public class activity_choose_search extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity2);
+
+        Intent intent = getIntent();
+        final String apiInput = intent.getStringExtra(NewUserSearchActivity.EXTRA_TEXT);
+
         goBackButton = (Button) findViewById(R.id.goBackBtn);
         apiButton = (Button)findViewById(R.id.apiButton);
         apiResponse = (TextView)findViewById(R.id.apiText);
@@ -37,26 +45,29 @@ public class activity_choose_search extends AppCompatActivity {
                 List apiArray;
                 apiResponse.setText("");
 
-                String[] stringArray;
+                /* String[] stringArray;
                 stringArray = new String[]{ "American", "Mexican", "Asian","European", "African", "South American",
-                                            "Indian", "burgers", "Pizza", "Steak", "Desserts", "Breakfast" };
+                        "Indian", "burgers", "Pizza", "Steak", "Desserts", "Breakfast" };
                 Random randomIndex = new Random();
-                int n = randomIndex.nextInt(12);
-                yelpApiCall.AsyncApi sendCall = new yelpApiCall.AsyncApi( stringArray[n],"nashville");
-                String response = null;
+                int n = randomIndex.nextInt(12); */
+
+                yelpApiCall.AsyncApi hello = new yelpApiCall.AsyncApi( apiInput,"nashville");
+                String bitch = null;
                 try {
-                    response = sendCall.execute().get();
+                    bitch = hello.execute().get();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 try {
-                    JSONConvert convertedOutput = new JSONConvert(response);
-                    apiArray = convertedOutput.getResponseArray();
+                    JSONConvert gay = new JSONConvert(bitch);
+                    apiArray = gay.getResponseArray();
                     System.out.println(apiArray.size());
-                    //apiResponse.append(convertedOutput.getOneRandom()+"\n");
+                    //apiResponse.append(gay.getOneRandom()+"\n");
                     int length = apiArray.size();
+
+                    int length1 = 3;
 
                     for(int i=0; i < length; i++)
                     {
@@ -79,7 +90,7 @@ public class activity_choose_search extends AppCompatActivity {
         });
     }
     public void goBackScreen() {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, activity_choose_search.class);
         startActivity(intent);
     }
 }
